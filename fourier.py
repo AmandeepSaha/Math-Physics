@@ -5,13 +5,14 @@ import matplotlib.pyplot as plt
 class Fourier:
     def __init__(self):
         self.n = int(input("n-th term:\t"))
+        self.dx = 0.01
 
     def data_points(self):
         self.x = np.linspace(-2 * np.pi, 2 * np.pi, 1000)
         self.y = np.arctan(self.x)
-        self.a_0 = np.cumsum(self.y) / np.pi
-        self.a_n = lambda n: np.cumsum(self.y * np.cos(n * self.x)) / np.pi
-        self.b_n = lambda n: np.cumsum(self.y * np.sin(n * self.x)) / np.pi
+        self.a_0 = np.cumsum(self.y)*dx / np.pi
+        self.a_n = lambda n: np.cumsum(self.y * np.cos(n * self.x))*dx / np.pi
+        self.b_n = lambda n: np.cumsum(self.y * np.sin(n * self.x))*dx / np.pi
 
     def terms(self, n):
         self.data_points()
